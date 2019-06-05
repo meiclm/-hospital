@@ -1,0 +1,60 @@
+/**index.wxss**/
+.contain{
+  /* border: 1px solid red; */
+}
+.tip-top{
+  text-align: center;
+  color: tan;
+  font-size: 1.2em;
+  line-height: 4em;
+}
+.img_row{
+  /* border: 1px solid blue; */
+  height: 50vh;
+  overflow: hidden;
+  padding: 2px 0;
+}
+.picker{
+  /* color: green; */
+}
+.pickerBtn{
+  background:  yellowgreen;
+  display: inline-block;
+  line-height: 2em;
+  width: 4em;
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+}
+.myBtn{
+  margin: 5px 2px;
+
+}
+.list_kids{
+  /* border: 1px #9BCD9B solid; */
+  text-align: center;
+}
+.nav_list{
+  display: inline-block;
+  border: 1px solid black;
+  margin: 0.5em 1em;
+  line-height: 1.8em;
+  border-radius: 5px;
+  width: 38%;
+  text-align: center;
+}
+.vaccine{
+  /* border: 1px solid olive; */
+  /* text-align: center; */
+  margin: 5px ;
+}
+.vaccine .nav_btn{
+  /* border: 1px solid blue; */
+  display: inline-block;
+  border-radius: 5px;
+  width: 8em;
+  text-align: center;
+  line-height: 2em;
+  background-color: #9BCD9B;
+  color: #636363;
+}

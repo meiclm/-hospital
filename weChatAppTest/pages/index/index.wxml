@@ -1,0 +1,27 @@
+<!--index.wxml-->
+<view class='placeholder'></view>
+<view class="contain">
+  <view class='tip-top'>Welcome to The vaccine</view>
+  <view class='img_row'>
+    <image src='/img/1.jpg'></image>
+  </view>
+  <view class='myBtn'>
+  <!-- <view class='vaccine'>
+    <navigator url='/pages/vaccine/vaccine' class='nav_btn'>查看疫苗知识</navigator>
+  </view> -->
+  <!-- <picker bindchange='bindPickerChange' value='index' range='{{childrenName}}'>
+    <view class='picker'>当前选择：<text class='pickerBtn'>{{childrenName[index]}}</text></view>
+  </picker> -->
+    <view >
+     <view>查看您孩子的相关消息:</view>
+     <view class='list_kids'>
+      <navigator class='nav_list' wx:for="{{childrenInfo}}" wx:key="" url="/pages/message/message?pusername={{item.pusername}}">
+        {{item.pName}}
+      </navigator>
+    </view>
+  </view>
+  <!-- 查看疫苗知识 -->
+  
+  </view>
+  
+</view>

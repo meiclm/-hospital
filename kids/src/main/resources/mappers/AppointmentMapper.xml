@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.java.kids.dao.AppointmentMapper">
+    <!--病例-->
+    <resultMap id="doctorResult" type="com.java.kids.model.Doctor">
+        <result column="dusername" property="dusername"/>
+        <result column="dpassword" property="dpassword"/>
+        <result column="dName" property="dName"/>
+        <result column="dgender" property="dgender"/>
+        <result column="dphone" property="dphone"/>
+        <result column="dpositionTime" property="dpositionTime"/>
+        <result column="durl" property="durl"/>
+        <result column="dbirthday" property="dbirthday"/>
+    </resultMap>
+
+    <resultMap id="patientResult" type="com.java.kids.model.Patient">
+        <result property="pusername" column="pusername"/>
+        <result property="ppassword" column="ppassword"/>
+        <result property="pName" column="pName"/>
+        <result property="pgender" column="pgender"/>
+        <result property="pbirthday" column="pbirthday"/>
+        <result property="pphone" column="pphone"/>
+        <result property="pparent" column="pparent"/>
+    </resultMap>
+
+    <resultMap id="caseResult" type="com.java.kids.model.Case">
+        <result column="cid" property="id"/>
+        <result column="describe" property="describe"/>
+        <result column="lookTime" property="lookTime"/>
+        <result column="advice" property="advice"/>
+        <association property="doctor" resultMap="doctorResult"/>
+        <association property="patient" resultMap="patientResult"/>
+    </resultMap>
+
+    <!--疫苗表-->
+<!--    <resultMap id="vaccineResult" type="com.java.kids.model.Vaccine">-->
+<!--        <result column="vNo" property="vid"/>-->
+<!--        <result column="name" property="name"/>-->
+<!--        <result column="pathogenesis" property="pathogenesis"/>-->
+<!--        <result column="precaution" property="precaution"/>-->
+<!--        <result column="handling" property="handling"/>-->
+<!--    </resultMap>-->
+<!--    <resultMap id="appointmentResult" type="com.java.kids.model.Appointment">-->
+<!--        <id column="aid" property="aid"/>-->
+<!--        <result column="aTime" property="aTime"/>-->
+<!--        <association property="aCase" resultMap="caseResult"/>-->
+<!--        <association property="vaccine" resultMap="vaccineResult"/>-->
+<!--    </resultMap>-->
+
+    <resultMap id="CommonResult" type="com.java.kids.model.Appointment">
+        <id column="aid" property="aid"/>
+        <result column="aTime" property="aTime"/>
+        <result column="vNo" property="vNo"/>
+        <association property="aCase" resultMap="caseResult"/>
+    </resultMap>
+    <select id="findPatientAllAppointment" parameterType="java.lang.String"
+            resultMap="CommonResult">
+        select * from common_appointment where pusername=#{pusername};
+    </select>
+    <select id="findDoctorAllAppointment" parameterType="java.lang.String"
+            resultMap="CommonResult">
+        select * from common_appointment where dusername=#{dusername} and aTime >now()
+        order by aTime asc ;
+    </select>
+    <select id="findCurrentAppointment" parameterType="java.lang.String" resultMap="CommonResult">
+        select * from common_appointment where dusername=#{dusername} and
+        <if test="startTime!=''and endTime!=''">
+            aTime between #{startTime} and #{endTime}
+        </if>
+
+    </select>
+    <select id="findCaseAppointment" resultType="java.lang.String">
+        select cNo from appointment where cNo=#{cNo};
+    </select>
+    <select id="findAppointment" resultType="com.java.kids.model.Appointment">
+        select * from appointment where aid=#{aid}
+    </select>
+    <delete id="deleteAppointment" >
+        delete from  appointment where aid=#{aid}
+    </delete>
+<!--    打疫苗预约-->
+    <insert id="appointmentVaccine">
+        insert into appointment(cNo,aTime,vNo)
+        value (#{cNo},#{aTime},#{vNo})
+    </insert>
+<!--    普通挂号-->
+    <insert id="appointment">
+        insert into appointment(cNo,aTime)
+        value (#{cNo},#{aTime})
+    </insert>
+    <update id="modifiedTime">
+        update appointment set aTime=#{aTime}
+        where aid=#{aId}
+    </update>
+</mapper>

@@ -1,0 +1,25 @@
+<!--pages/vaccineInfo/vaccineInfo.wxml-->
+<view class='placeholder'></view>
+<view>
+  <view class='topBar'>
+  <image class='back' src='/img/back.jpg' bindtap='goToVaccine'></image>
+   <text class='info'>疫苗信息</text>
+  </view>
+  <view class='container'>
+    <view class='vaccineName'>
+       <text>{{vaccine.name}}</text>
+    </view>
+    <view class='section'>
+      <text class='little_title'>症状：</text>
+      <text class='content'>{{vaccine.pathogenesis}}</text>
+    </view>
+    <view class='section'>
+      <text class='little_title'>预防：</text>
+      <text class='content'>{{vaccine.precaution}}</text>
+    </view>
+    <view class='section'>
+      <text class='little_title'>处理：</text>
+      <text class='content'>{{vaccine.handling}}</text>
+    </view>
+  </view>
+</view>

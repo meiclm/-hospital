@@ -1,0 +1,49 @@
+<!--pages/message/message.wxml-->
+<view class='placeholder'></view>
+<view class='container'>
+<!-- 标题栏，看预约信息与系统推送消息 -->
+ <view class='page_title'>
+   <image class='back' src='/img/back.jpg' bindtap='goBack'></image>
+   <text class='info'>消息</text>
+ </view>
+ <view class='two_btn'>
+     <text class="title_btn {{index==1?'active':''}} " data-index='1' bindtap='goToSystem'>系统消息</text>
+     <text class="appointment title_btn {{index==2?'active':''}} " data-index='2' bindtap='goToAppointment'>预约消息</text>
+ </view>
+ <!-- 显示系统消息 -->
+ <view class='system_list' wx:if="{{index==1}}">
+    <view class='list-title'>
+      <text>天气：{{weather.weather}}</text>
+      <text>{{weather.temp1}}~{{weather.temp2}}</text>
+    </view>
+    <!-- 消息体 -->
+    <view>
+       {{tempMsg}}
+    </view>
+    <!-- 消息提醒 -->
+    <view>
+    {{systemMessage}}
+    </view>
+    <view>...........</view>
+    <!-- 季节变换 -->
+    <view class='seasonTip'>季节注意：</view>
+    <!-- <view>{{seasonContent[0]}}</view> -->
+    <view>
+      <view wx:for="{{seasonContent}}" wx:key="">{{item}}</view>
+    </view>
+    
+ </view>
+<!-- 显示消息列表 -->
+ <view class='appoint_list' wx:else>
+ <scroll-view scroll-y="true">
+   <view wx:if="{{appointment_list.length==0}}" class='tip'>没有预约哦！</view>
+   <view class='list' wx:for="{{appointment_list}}" wx:key="" wx:for-index="j">
+     {{item.aTime}} 
+     <text wx:if="{{item.vNo>0}}">打疫苗</text>
+     <text wx:else>普通看诊</text>
+   </view>
+   
+ </scroll-view>
+ </view>
+ 
+</view>

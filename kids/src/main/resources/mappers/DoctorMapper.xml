@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.java.kids.dao.DoctorMapper">
+    <!--多条记录的集合-->
+    <resultMap id="doctorResult" type="com.java.kids.model.Doctor">
+        <id column="dusername" property="dusername"/>
+        <result column="dpassword" property="dpassword"/>
+        <result column="dName" property="dName"/>
+        <result column="dgender" property="dgender"/>
+        <result column="dphone" property="dphone"/>
+        <result column="dpositionTime" property="dpositionTime"/>
+        <result column="durl" property="durl"/>
+        <result column="dbirthday" property="dbirthday"/>
+    </resultMap>
+    <select id="getDoctorByUsername" parameterType="java.lang.String" resultType="com.java.kids.model.Doctor">
+        select * from doctor where dusername=#{dusername}
+    </select>
+    <select id="getDoctors" resultMap="doctorResult">
+        select * from doctor where dusername!='admin';
+    </select>
+    <update id="updateDoctor" parameterType="com.java.kids.model.Doctor">
+        update doctor set dpassword=#{dpassword},dName=#{dName},dphone=#{dphone},durl=#{durl}
+        where dusername=#{dusername}
+    </update>
+    <insert id="setDoctor">
+        insert into doctor(dusername,dpassword,dName,dgender,dphone,dpositionTime) value
+        (#{dusername},#{dpassword},#{dName},#{dgender},#{dphone},#{dpositionTime})
+    </insert>
+</mapper>

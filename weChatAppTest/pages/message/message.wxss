@@ -1,0 +1,61 @@
+/* pages/message/message.wxss */
+.page_title{
+  text-align: center;
+  border-bottom: 1px solid #e8e8e8;
+  height: 2em;
+  position: relative;
+}
+.page_title .back{
+  width: 1.5em;
+  height: 1em;
+  position: absolute;
+  left: 0.5em;
+  top: 0.5em;
+  line-height: 2em;
+}
+.info{
+  line-height: 2em;
+}
+/* 二级标题按钮 */
+.title_btn{
+  display: inline-block;
+  width: 50%;
+  box-shadow: 0 2px 1px  #e8e8e8;
+  /* border-bottom: 1px solid #e8e8e8; */
+  line-height: 2em;
+  text-align: center;
+  /* margin-top: 1px; */
+  border-radius: 2px
+}
+.active{
+  background: #FFC125;
+  color: white;
+}
+/* 列表的样式 */
+.list{
+  display: block;
+  margin: 1px 5px;
+  /* border: 1px #FFC125 solid; */
+  line-height: 2em;
+}
+.list:nth-child(even){
+  background:rgb(228, 227, 227);
+}
+ .system_list{
+   /* border: 1px red solid; */
+   margin: 2px 0.5em;
+ }
+ .system_list .list-title{
+   border-bottom: 1px solid #e8e8e8;
+ }
+ .list-title>text{
+   line-height: 2em;
+   margin-left: 0.5em;
+ }
+ .tip{
+   text-align: center;
+ }
+ /* 季节 */
+ .seasonTip{
+   font-weight: bold;
+ }

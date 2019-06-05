@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.java.kids.dao.CaseMapper">
+    <resultMap id="doctorResult" type="com.java.kids.model.Doctor">
+        <result column="dusername" property="dusername"/>
+        <result column="dpassword" property="dpassword"/>
+        <result column="dName" property="dName"/>
+        <result column="dgender" property="dgender"/>
+        <result column="dphone" property="dphone"/>
+        <result column="dpositionTime" property="dpositionTime"/>
+        <result column="durl" property="durl"/>
+        <result column="dbirthday" property="dbirthday"/>
+    </resultMap>
+
+    <resultMap id="patientResult" type="com.java.kids.model.Patient">
+        <result property="pusername" column="pusername"/>
+        <result property="ppassword" column="ppassword"/>
+        <result property="pName" column="pName"/>
+        <result property="pgender" column="pgender"/>
+        <result property="pbirthday" column="pbirthday"/>
+        <result property="pphone" column="pphone"/>
+        <result property="pparent" column="pparent"/>
+    </resultMap>
+
+    <resultMap id="caseResult" type="com.java.kids.model.Case">
+        <id column="id" property="id"/>
+        <result column="describe" property="describe"/>
+        <result column="lookTime" property="lookTime"/>
+        <result column="advice" property="advice"/>
+        <association property="doctor" resultMap="doctorResult"/>
+        <association property="patient" resultMap="patientResult"/>
+    </resultMap>
+
+<!--    未被处理过的病例-->
+    <select id="doctorCases" parameterType="String" resultMap="caseResult">
+        select * from cases_dp where dusername=#{dNo} and (trim(lookTime)='' or lookTime is null) ;
+    </select>
+    <select id="handlingCase" parameterType="String" resultMap="caseResult">
+        select * from cases_dp where dusername=#{dNo} and trim(lookTime)!='';
+    </select>
+    <select id="getMyCases" parameterType="String" resultType="com.java.kids.model.Case">
+        select * from cases where id=#{id};
+    </select>
+
+    <select id="patientCase" parameterType="String" resultMap="caseResult">
+        select * from cases_dp where pusername=#{pNo};
+    </select>
+    <insert id="setCase">
+        insert into cases(id,pNo,dNo,`describe`)
+        value (#{id},#{pNo},#{dNo},#{describe})
+    </insert>
+
+    <update id="sendAdvise">
+        update cases set advice=#{advise},lookTime=#{lookTime}
+        where id=#{id}
+    </update>
+</mapper>

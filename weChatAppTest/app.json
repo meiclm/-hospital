@@ -1,0 +1,20 @@
+{
+  "tabBar":{
+    "list":[
+      {"pagePath": "pages/index/index","text":"首页"},
+      {"pagePath": "pages/vaccine/vaccine","text": "疫苗"}
+    ]
+  },
+  "pages": [
+    "pages/scope/scope",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/vaccine/vaccine",
+    "pages/vaccineInfo/vaccineInfo",
+    "pages/message/message"
+  ],
+  "window": {
+    "navigationStyle": "custom"
+  },
+  "sitemapLocation": "sitemap.json"
+}

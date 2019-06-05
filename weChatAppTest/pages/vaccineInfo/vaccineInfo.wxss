@@ -1,0 +1,42 @@
+/* pages/vaccineInfo/vaccineInfo.wxss */
+.topBar{
+  text-align: center;
+  border-bottom: 1px solid #e8e8e8;
+  height: 2em;
+  position: relative;
+}
+.back{
+  width: 1.5em;
+  height: 1em;
+  position: absolute;
+  left: 0.5em;
+  top: 0.5em;
+  line-height: 2em;
+}
+.info{
+  line-height: 2em;
+}
+.container{
+  width: 100%;
+  /* border: 1px solid red; */
+}
+.section{
+  margin: 1em 0;
+  /* border: 1px solid darkblue;  */
+}
+.container .vaccineName{
+  text-align: center;
+  line-height: 2em;
+  color: gray;
+  box-shadow: 1px 2px 0px #e8e8e8;
+}
+.container .content{
+  display: block;
+  padding: 0px 0.5em;
+  text-indent: 2em;
+  font-size: 0.9em;
+  border-bottom: 0.5px #e8e8e8 solid;
+}
+.container .little_title{
+  color: cornflowerblue;
+}

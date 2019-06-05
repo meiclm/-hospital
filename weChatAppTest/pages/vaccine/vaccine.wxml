@@ -1,0 +1,31 @@
+<!--pages/vaccine/vaccine.wxml-->
+<view class='placeholder'></view>
+<view class='top_title'>
+<!-- bindtap='goToVaccine' -->
+ <!-- <image class='back' bindtap='goBack' src='/img/back.jpg'></image> -->
+  <text>疫苗健康知识</text>
+</view>
+<!-- 搜索框 -->
+<view class='section top'>
+   <input class='myinput' bindinput="getInputValue" placeholder='输入疫苗名称' bindconfirm='searchVaccine'/>
+   <view class='search_icon'>
+     <span class="search_icon1"></span><span class='search_icon2'></span>
+   </view>
+</view>
+<view class='container'>
+  <scroll-view class='default_scroll' wx:if="{{searchIndex==0}}">
+    <!-- <view wx:for="{{vaccineList}}" wx:key="" wx:for-item="itemName" bindtap='goToInfo' >
+      <text>{{itemName.name}}</text>
+    </view> -->
+
+    <navigator class='list'  wx:for="{{vaccineList}}" wx:key="" url="/pages/vaccineInfo/vaccineInfo?name={{item.name}}">
+    {{item.name}}
+    </navigator>
+  </scroll-view>
+  <scroll-view class='result_scroll' wx:else>
+    <view wx:if="{{resultList.length==0}}">还没有该疫苗！</view>
+    <view wx:else>
+      <navigator class='list'  wx:for="{{resultList}}" wx:key="" url="/pages/vaccineInfo/vaccineInfo?name={{item.name}}" >{{item.name}}</navigator>
+    </view>
+  </scroll-view>
+</view>

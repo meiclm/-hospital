@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.java.kids.dao.PatientMapper">
+    <resultMap id="patientResult" type="com.java.kids.model.Patient">
+        <id property="pusername" column="pusername"/>
+        <result property="ppassword" column="ppassword"/>
+        <result property="pName" column="pName"/>
+        <result property="pgender" column="pgender"/>
+        <result property="pbirthday" column="pbirthday"/>
+        <result property="pphone" column="pphone"/>
+        <result property="pparent" column="pparent"/>
+        <result property="openId" column="open_id"/>
+    </resultMap>
+    <select id="getPatientByUsername" parameterType="java.lang.String" resultType="com.java.kids.model.Patient">
+        select * from patient where pusername=#{username};
+    </select>
+    <select id="getPatient" resultType="com.java.kids.model.Patient">
+        select * from patient where pusername=#{username} and ppassword=#{password};
+    </select>
+<!--    微信登录-->
+    <select id="getChildren" resultMap="patientResult" parameterType="java.lang.String">
+        select * from patient where open_id=#{openId};
+    </select>
+    <insert id="insertPatient" parameterType="com.java.kids.model.Patient">
+        insert into patient(pusername,ppassword,pName,pgender,pbirthday,pphone,pparent)
+        value (#{pusername},#{ppassword},#{pName},#{pgender},#{pbirthday},#{pphone},#{pparent})
+    </insert>
+    <update id="updatePatient">
+        update patient set pName=#{pName},pgender=#{gender},pbirthday=#{birthday},pparent=#{parent},pphone=#{phone}
+        where pusername=#{username}
+    </update>
+</mapper>

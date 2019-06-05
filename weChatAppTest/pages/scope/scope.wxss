@@ -1,0 +1,29 @@
+/* pages/scope/scope.wxss */
+.enpower{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 11111;
+  width: 100%;
+  height: 100%;  
+  background: rgba(0, 0, 0, 0.5)
+}
+.enpower-msg{
+  background: white;
+  width: 80%;
+  height: 250rpx;
+  margin: 40% auto;
+  border-radius: 10rpx;
+  position: relative;
+}
+.enpower-msg-content{
+  font-size: 30rpx;
+  padding: 36rpx;
+  box-sizing: border-box;
+}
+.enpower-msg button{
+  position: absolute;
+  width: 100%;
+  color: #ff2943;
+  bottom:0;
+}

@@ -1,0 +1,9 @@
+<!-- 授权 -->
+<view class='enpower' catchtouchmove="doNotMove" wx:if="{{enpower == false}}">
+  <view class='enpower-msg' >
+    <view class='enpower-msg-content'>
+      需要获取您的公开信息（昵称、头像等），请点击立即授权
+    </view>
+    <button open-type='getUserInfo' bindgetuserinfo="bindGetUserInfo" >立即授权</button>
+  </view>
+</view>
